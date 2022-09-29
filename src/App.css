@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+#squares {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+.square {
+ 
+  
+  width: 4.2%;
+  aspect-ratio: 1 / 1;
+  
+  color: green;
+}
+
+#endContainer {
+  color: yellow;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.5);
+  text-align: center;
+}
+
+#guessTrackerContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.guess {
+  border: 1px solid black;
+  margin: 2px 2px;
+}
+
+h2 {
+  margin: 0px;
+}
+form {
+  margin: 10px
+}
