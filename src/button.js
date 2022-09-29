@@ -16,8 +16,11 @@ export function Buttons() {
         
         
     }
-    // eslint-disable-next-line
-    useEffect(() => handleBuild, [])
+   
+    useEffect(() => 
+    { handleBuild()
+         // eslint-disable-next-line
+    }, [])
     function handleBuild(){
         dispatch(buildColorArray())
         console.log(colorOptions)
