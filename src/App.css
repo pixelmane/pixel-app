@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  box-sizing: border-box;
 }
 
 .App-logo {
@@ -65,6 +66,7 @@
 }
 
 #guessTrackerContainer {
+ 
   display: flex;
   width: 100%;
   justify-content: center;
@@ -73,6 +75,8 @@
 .guess {
   border: 1px solid black;
   margin: 2px 2px;
+  padding: 5px;
+  font-size: 35px;
 }
 
 h2 {
@@ -80,4 +84,68 @@ h2 {
 }
 form {
   margin: 10px
+}
+#openGuess {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  color: white;
+  background-color: black;
+  font-size: 25px;
+}
+#submitFormContainer {
+  
+ 
+  
+
+ 
+}
+
+#formBackground {
+  display: none;
+  justify-content: center;
+  align-items: center;
+ position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.5);
+}
+@keyframes wrong {
+  0% {
+    display: flex;
+  }
+  50% {
+
+  }
+  100% {
+    display: none;
+  }
+}
+#wrongContainer {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+  align-items: center;
+  justify-content: center;
+  
+ 
+}
+#wrongX {
+  display:flex;
+  align-items: center;
+  border: 5px solid white;
+  padding: 30px;
+  font-size: 100px;
+  color: white;
+  height: 150px;
 }
