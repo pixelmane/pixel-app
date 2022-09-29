@@ -8,7 +8,7 @@ export function Buttons() {
     const rightAnswer = useSelector(state => state.squares.answer)
     const numberOfSquares = useSelector(state => state.squares.colorArray)
     const squaresRevealed = useSelector(state => state.squares.squaresRevealed)
-    const attempts = useSelector(state => state.squares.attempts)
+    
    const guessTracker = useSelector(state => state.squares.guessTracker)
     function handleClick(element){
         console.log(element.color)
@@ -30,7 +30,7 @@ export function Buttons() {
         setGuess(e.target.value)
         console.log(guess)
     }
-    let delay = (t) => new Promise(res => setTimeout(res, t))
+   
     function handleSubmit(e) {
         e.preventDefault()
         console.log(guess)
