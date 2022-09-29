@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const gameboardSlice = createSlice({
     name: 'squares',
     initialState: {
-        colorArray: [{color:"cbf0ff",revealed:false},
+        colorArray: [{color:"#cbf0ff",revealed:false},
         {color:"#cbf0ff",revealed:false},
         {color:"#cbf0ff",revealed:false},
         {color:"#cbf0ff",revealed:false},
@@ -672,7 +672,9 @@ const gameboardSlice = createSlice({
         experiment: [],
         answer: 'Mario',
         alive: true,
-        selected: []
+        selected: [],
+        fakePositioning: 6,
+        fakeColor: 'green'
         
     },
     reducers:{
@@ -682,11 +684,14 @@ const gameboardSlice = createSlice({
         buildColorArray: (state, action) => {
             let proxyArray = []
             for(let z = 0; z < state.colorArray.length; z++){
+                
             if(proxyArray.indexOf(state.colorArray[z].color) === -1){
                 proxyArray.push(state.colorArray[z].color)
                 state.experiment.push({color: state.colorArray[z].color, clicked: false})
+                
             }
             }
+            state.experiment.splice(state.fakePositioning, 0, {color: state.fakeColor, clicked: false})
             console.log(proxyArray)
         },
         revealColor: (state, action) => {

@@ -8,7 +8,7 @@ export function Buttons() {
     const rightAnswer = useSelector(state => state.squares.answer)
     const numberOfSquares = useSelector(state => state.squares.colorArray)
     const squaresRevealed = useSelector(state => state.squares.squaresRevealed)
-    
+    const rightArray = Array.from(useSelector(state => state.squares.answer))
    const guessTracker = useSelector(state => state.squares.guessTracker)
     function handleClick(element){
         console.log(element.color)
@@ -51,6 +51,7 @@ export function Buttons() {
         document.getElementById('formBackground').style.display = 'none'
         document.getElementById('openGuess').style.display = 'flex'
     }
+  
     return(
         <div>
             <h3>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
@@ -73,6 +74,9 @@ export function Buttons() {
         </div>
        {/* <div id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
         <div id='wrongContainer'><h1 id='wrongX' >X</h1></div>
+        <div style={{display: 'flex', width: '100%', justifyContent: 'center', marginTop: '25px'}}>
+        {rightArray.map(element => <div style={{width: '25px', borderBottom: '3px solid black', marginLeft: '5px'}}></div>)}
+        </div>
         </div>
     )
 }
