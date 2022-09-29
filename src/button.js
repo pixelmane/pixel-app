@@ -56,7 +56,8 @@ export function Buttons() {
             <h3>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
             <h2>Click to reveal colors:</h2>
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'wrap'}}>
-            {colorOptions === undefined ? <p>no color</p> : colorOptions.map(element => element.clicked ? <div style={{ margin: '2px', opacity: '.3', border: '2px solid grey', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} ></div> : <div style={{margin: '2px',border: '2px solid black', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element)} ></div>)}
+            {colorOptions === undefined ? <p>no color</p> : colorOptions.map(element => element.clicked ? <div><div style={{ margin: '2px', opacity: '.3', border: '2px solid grey', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} ></div></div> : <div style={{margin: '2px',border: '2px solid black', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element)} ></div>)}
+            <div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>
         </div>
        
         
@@ -70,7 +71,7 @@ export function Buttons() {
         <div id='guessTrackerContainer'>
         {guessTracker ? guessTracker.map(element => <div className='guess' >X</div>) : null}
         </div>
-        <div id="openGuess" onClick={handleOpenGuess}>Click to Guess</div>
+       {/* <div id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
         <div id='wrongContainer'><h1 id='wrongX' >X</h1></div>
         </div>
     )
