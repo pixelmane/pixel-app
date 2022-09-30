@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { checkAnswer, revealSquares, buildColorArray, buildCheckArray } from './gameboardSlice.js'
+// eslint-disable-next-line
+import image from './brush.png'
 export function Buttons() {
     const [guess, setGuess] = useState('')
     const guessArray = Array.from(guess)
@@ -62,10 +64,10 @@ export function Buttons() {
   
     return(
         <div>
-            <h3>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
-            <h2>Click to reveal colors:</h2>
+            <h3 style={{marginTop: '5px', marginBottom: '5px'}}>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
+            <h2>add pixel colors -> guess image</h2>
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'wrap'}}>
-            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div><div style={{textShadow:'-1px -1px 0 #000,0   -1px 0 #000,1px -1px 0 #000,1px  0   0 #000,1px  1px 0 #000,0    1px 0 #000,-1px  1px 0 #000,-1px  0   0 #000', color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid grey', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} >{element.tiles}</div></div> : <div style={{margin: '2px',border: '2px solid black', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} ></div>)}
+            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div><div style={{textShadow:'-1px -1px 0 #000,0   -1px 0 #000,1px -1px 0 #000,1px  0   0 #000,1px  1px 0 #000,0    1px 0 #000,-1px  1px 0 #000,-1px  0   0 #000', color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid grey', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} >{element.tiles}</div></div> : <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px',border: '2px solid black', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
             <div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>
         </div>
        
@@ -74,11 +76,11 @@ export function Buttons() {
         <div style={{width: '100%', display: 'flex'}}>
         <form id='submitFormContainer' onSubmit={handleSubmit}>
             
-        <div style={{width: '100%', display: 'flex', marginBottom: '20px'}}>
+        <div style={{width: '100%', display: 'flex', marginBottom: '20px', fontWeight: 'bold', fontSize: '30px'}}>
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}
             
             </div>
-            <div style={{display: 'flex', marginBottom: '20px'}}>
+            <div style={{display: 'flex', marginBottom: '20px', fontWeight: 'bold', fontSize: '30px'}}>
             {checkArray.map((element, index) => <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{guessArray[index] ? guessArray[index] : null}</div>)}
             
             </div>
@@ -94,15 +96,15 @@ export function Buttons() {
         
        
       
-       <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
+       <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px', fontWeight: 'bold', fontSize: '30px'}}>
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', border: '2px solid white', height: '50px', width: '50px'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', height: '50px', width: '50px'}}>{element}</div>)}
             
             </div>
-        <div id='wrongContainer' style={{width: '100%', justifyContent: 'center', marginTop: '20px'}}>
+        <div id='wrongContainer' style={{width: '100%', justifyContent: 'center', marginTop: '20px', fontWeight: 'bold', fontSize: '30px'}}>
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}
             
             </div>
-        
+        <h5>(goal is to add as few pixel colors as possible)</h5>
         </div>
     )
 }
