@@ -86,7 +86,7 @@ export function Buttons() {
             </div>
             <input maxLength={rightAnswerArray.length} value={guess} id='focus' onChange={handleChange} type='text' placeholder="guess here" />
             <button type='submit'>Submit</button>
-            <div style={{width: '100%'}}>
+            <div style={{width: '100%', marginTop: '10px'}}>
         <div style={{marginTop: '25px', color: 'white', border: '1px solid white', borderRadius: '5px', padding: '5px', width: '100px', margin: '0px auto'}} onClick={handleCloseGuess}>close</div>
         </div>
         </form>
