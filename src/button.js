@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { checkAnswer, revealSquares, buildColorArray } from './gameboardSlice.js'
+import { checkAnswer, revealSquares, buildColorArray, buildCheckArray } from './gameboardSlice.js'
 export function Buttons() {
     const [guess, setGuess] = useState('')
+    const guessArray = Array.from(guess)
     const dispatch = useDispatch();
     const colorOptions = useSelector(state => state.squares.experiment) 
     const rightAnswer = useSelector(state => state.squares.answer)
+    const rightAnswerArray = Array.from(useSelector(state => state.squares.answer))
     const numberOfSquares = useSelector(state => state.squares.colorArray)
     const squaresRevealed = useSelector(state => state.squares.squaresRevealed)
-    const rightArray = Array.from(useSelector(state => state.squares.answer))
-   const guessTracker = useSelector(state => state.squares.guessTracker)
-    function handleClick(element){
+  
+    const checkArray = useSelector(state => state.squares.checkArray)
+    //rightAnswerArray.forEach((element, index) => checkArray.push({wrong: '?', right: rightAnswerArray[index],correct: false, }))
+   
+   function handleClick(element, index){
         console.log(element.color)
-        dispatch(revealSquares(element.color))
+        dispatch(revealSquares({color: element.color,
+                                index: index}))
         
         
     }
@@ -23,6 +28,8 @@ export function Buttons() {
     , [])
     function handleBuild(){
         dispatch(buildColorArray())
+       
+        dispatch(buildCheckArray(checkArray))
         console.log(colorOptions)
         console.log(guess)
     }
@@ -43,6 +50,7 @@ export function Buttons() {
         setGuess('')
     }
     function handleOpenGuess() {
+        console.log(checkArray)
         document.getElementById('formBackground').style.display = 'flex'
         document.getElementById('openGuess').style.display = 'none'
         document.getElementById('focus').focus()
@@ -57,26 +65,44 @@ export function Buttons() {
             <h3>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
             <h2>Click to reveal colors:</h2>
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'wrap'}}>
-            {colorOptions === undefined ? <p>no color</p> : colorOptions.map(element => element.clicked ? <div><div style={{ margin: '2px', opacity: '.3', border: '2px solid grey', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} ></div></div> : <div style={{margin: '2px',border: '2px solid black', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element)} ></div>)}
+            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div><div style={{textShadow:'-1px -1px 0 #000,0   -1px 0 #000,1px -1px 0 #000,1px  0   0 #000,1px  1px 0 #000,0    1px 0 #000,-1px  1px 0 #000,-1px  0   0 #000', color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid grey', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} >{element.tiles}</div></div> : <div style={{margin: '2px',border: '2px solid black', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} ></div>)}
             <div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>
         </div>
        
         
         <div id='formBackground'>
+        <div style={{width: '100%', display: 'flex'}}>
         <form id='submitFormContainer' onSubmit={handleSubmit}>
-            <input value={guess} id='focus' onChange={handleChange} type='text' placeholder="guess here" />
+            
+        <div style={{width: '100%', display: 'flex', marginBottom: '20px'}}>
+            {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}
+            
+            </div>
+            <div style={{display: 'flex', marginBottom: '20px'}}>
+            {checkArray.map((element, index) => <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{guessArray[index] ? guessArray[index] : null}</div>)}
+            
+            </div>
+            <input maxLength={rightAnswerArray.length} value={guess} id='focus' onChange={handleChange} type='text' placeholder="guess here" />
             <button type='submit'>Submit</button>
+            <div style={{width: '100%'}}>
+        <div style={{marginTop: '25px', color: 'white', border: '1px solid white', borderRadius: '5px', padding: '5px', width: '100px', margin: '0px auto'}} onClick={handleCloseGuess}>close</div>
+        </div>
         </form>
-        <div style={{color: 'white', border: '1px solid white', borderRadius: '5px', padding: '5px'}} onClick={handleCloseGuess}>close</div>
+       
         </div>
-        <div id='guessTrackerContainer'>
-        {guessTracker ? guessTracker.map(element => <div className='guess' >X</div>) : null}
         </div>
-       {/* <div id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
-        <div id='wrongContainer'><h1 id='wrongX' >X</h1></div>
-        <div style={{display: 'flex', width: '100%', justifyContent: 'center', marginTop: '25px'}}>
-        {rightArray.map(element => <div style={{width: '25px', borderBottom: '3px solid black', marginLeft: '5px'}}></div>)}
-        </div>
+        
+       
+      
+       <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
+            {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', border: '2px solid white', height: '50px', width: '50px'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', height: '50px', width: '50px'}}>{element}</div>)}
+            
+            </div>
+        <div id='wrongContainer' style={{width: '100%', justifyContent: 'center', marginTop: '20px'}}>
+            {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}
+            
+            </div>
+        
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { revealColor } from './gameboardSlice.js'
 
-export function Gameboard() {
+export function EndGameboard() {
     return(
         <div style={{marginTop: '10px'}}>
             <Squares />
@@ -16,7 +16,7 @@ function Squares(){
     let squareArray = useSelector(state => state.squares.colorArray)
     function createTheSquares(element, index){
         
-            return <Square index={index} border={element.revealed ? 'none' : '.5px dashed grey'} color={element.revealed ? element.color : 'white'} reveal={element.revealed} />
+            return <Square index={index} color={element.color} reveal={element.revealed} />
         
         
     }
@@ -35,8 +35,8 @@ function Square( props ) {
         dispatch(revealColor(index))
     }
     return (
-    <div onClick={() => handleClick(props.index)} style={{fontSize: '1vw',color: 'grey', boxSizing: 'border-box',border: props.border, backgroundColor: props.color}} className='square'>
-       {props.reveal ? "" : '?'}
+    <div onClick={() => handleClick(props.index)} style={{backgroundColor: props.color}} className='square'>
+       
     </div>
 )
 }
