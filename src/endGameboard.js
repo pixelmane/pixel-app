@@ -21,7 +21,7 @@ function Squares(){
         
     }
     return (
-        <div id="squares">
+        <div id="squares"  >
             {squareArray.map((element, index) => createTheSquares(element, index))}
         </div>
     )

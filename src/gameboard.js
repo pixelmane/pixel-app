@@ -3,7 +3,7 @@ import { revealColor } from './gameboardSlice.js'
 
 export function Gameboard() {
     return(
-        <div style={{marginTop: '10px'}}>
+        <div style={{marginTop: '15px'}}>
             <Squares />
             
         </div>
@@ -16,12 +16,12 @@ function Squares(){
     let squareArray = useSelector(state => state.squares.colorArray)
     function createTheSquares(element, index){
         
-            return <Square index={index} border={element.revealed ? 'none' : '.5px dashed grey'} color={element.revealed ? element.color : 'white'} reveal={element.revealed} />
+            return <Square index={index} border={element.revealed ? 'none' : '.15px solid grey'} color={element.revealed ? element.color : 'white'} reveal={element.revealed} />
         
         
     }
     return (
-        <div id="squares">
+        <div id="squares" style={{boxShadow: '0px 2px 7px black'}}>
             {squareArray.map((element, index) => createTheSquares(element, index))}
         </div>
     )
