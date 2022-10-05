@@ -36,7 +36,9 @@ const gameboardSlice = createSlice({
         fakePositioning: 6,
         fakeColor: 'CYAN',
         guessedAnswer: [],
-        checkArray: []
+        checkArray: [],
+        previousGuesses: [],
+        revealedCheckArray: []
         
     },
     reducers:{
@@ -76,11 +78,18 @@ const gameboardSlice = createSlice({
             for (let z = 0; z < state.answerArray.length; z++){
                 if(state.answerArray[z].toUpperCase() === guessArray[z].toUpperCase()){
                     state.checkArray[z] = state.answerArray[z].toUpperCase()
+                    state.revealedCheckArray[z] = {letter: state.answerArray[z].toUpperCase(),
+                                                    correct: true}
                 }
                 else {
+                    state.revealedCheckArray[z] = {letter: guessArray[z].toUpperCase(),
+                                                    correct: false}
                     state.checkArray[z] = '?'
+                    
                 }
             }
+            state.previousGuesses.push(state.revealedCheckArray)
+            console.log(state.previousGuesses)
           if(action.payload.toLowerCase() === state.answer.toLowerCase()){
             console.log('youwin')
             
