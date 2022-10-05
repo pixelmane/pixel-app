@@ -116,7 +116,7 @@ export function Buttons() {
        
       
        
-        <div id='wrongContainer' style={{width: '100%', justifyContent: 'center', marginTop: '20px', fontWeight: 'bold', fontSize: '30px'}}>
+        <div id='wrongContainer' style={{width: '100%', justifyContent: 'center', fontWeight: 'bold', fontSize: '30px'}}>
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}
             
             </div>
