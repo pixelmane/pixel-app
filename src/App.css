@@ -188,6 +188,9 @@ form {
   width: 100%;
 }
 .keyboardButton {
+  display: grid;
+  justify-content: center;
+  align-items: center;
   width: 8vw;
   height: 12vw;
   background-color: 'green';
