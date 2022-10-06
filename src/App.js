@@ -30,9 +30,7 @@ function App() {
           </div>
           
           
-          <h2>Decent guess.</h2> 
           
-          <h2>It took only {guesses} guesses.</h2>
           
         
         </div>
