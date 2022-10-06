@@ -187,18 +187,30 @@ form {
 #keyboardCont {
   width: 100%;
 }
+
 .keyboardButton {
- 
+ display: grid;
+ justify-content: center;
+ align-items: center;
   width: 8vw;
   height: 12vw;
-  background-color: 'green';
+ 
   margin: .5vw;
   text-align: center;
   font-size: 16px;
 }
 .keyboardButton:active {
+  display: grid;
+  align-items: center;
+ justify-content: center;
   background-color: black;
   color: white;
+  width: 8vw;
+  height: 12vw;
+ 
+  margin: .5vw;
+  text-align: center;
+  font-size: 16px;
 }
 #firstRow {
   display: flex;
