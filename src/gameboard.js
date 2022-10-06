@@ -3,7 +3,7 @@ import { revealColor } from './gameboardSlice.js'
 
 export function Gameboard() {
     return(
-        <div style={{marginTop: '15px'}}>
+        <div style={{marginTop: '5px'}}>
             <Squares />
             
         </div>
