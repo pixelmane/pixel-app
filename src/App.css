@@ -177,9 +177,49 @@ form {
 }
 #revealTab {
   height: 30px;
+  
 }
 #guessContainer {
   display: none;
   
   flex-wrap: 'wrap';
+}
+#keyboardCont {
+  width: 100%;
+}
+.keyboardButton {
+  width: 8vw;
+  height: 12vw;
+  background-color: 'green';
+  margin: .5vw;
+  text-align: center;
+}
+.keyboardButton:active {
+  background-color: black;
+  color: white;
+}
+#firstRow {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 5px 0px;
+}
+#secondRow {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 5px 0px;
+}
+#thirdRow {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#DEL, #ENT {
+  width: 12vw;
+}
+
+#focus {
+  display: none;
 }

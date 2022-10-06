@@ -5,6 +5,8 @@ import { Gameboard } from "./gameboard.js";
 import decoy from './decoy.png'
 // eslint-disable-next-line
 import image from './brush.png'
+
+
 export function Buttons() {
     const [guess, setGuess] = useState('')
     const guessArray = Array.from(guess)
@@ -54,10 +56,17 @@ export function Buttons() {
         console.log(guess)
     }
     function handleChange(e){
-        setGuess(e.target.value.toUpperCase())
+        if(guess.length < rightAnswerArray.length && e.target.value !== 'DEL'){
+        setGuess(guess => guess + e.target.value.toUpperCase())
         console.log(guess)
-    }
-   
+        }
+        if(e.target.value === 'DEL'){
+            let newGuess = Array.from(guess);
+            newGuess.pop()
+            setGuess(newGuess.join(''))
+        }
+    
+}
     function handleSubmit(e) {
         console.log(prevGuesses)
         e.preventDefault()
@@ -84,6 +93,8 @@ export function Buttons() {
             document.getElementById('revealTab').innerHTML = '^ previous guesses ^'
         }
     }
+  
+    
     return(
         <div>
             <h3 style={{marginTop: '5px', marginBottom: '5px'}}>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
@@ -112,9 +123,47 @@ export function Buttons() {
             
             </div>
             <input maxLength={rightAnswerArray.length} value={guess} id='focus' onChange={handleChange} type='text' placeholder="thoughts?" />
-            
+            <div type='button' id="keyboardCont">
+      
+      <div type='button' id="firstRow">
+        <button className='keyboardButton' type='button' id="Q"  value="Q" onClick={(e) => handleChange(e)}>Q</button>
+        <button className='keyboardButton' type='button' id="W"  value="W" onClick={(e) => handleChange(e)}>W</button>
+        <button className='keyboardButton' type='button' id="E"  value="E" onClick={(e) => handleChange(e)}>E</button>
+        <button className='keyboardButton' type='button' id="R"  value="R" onClick={(e) => handleChange(e)}>R</button>
+        <button className='keyboardButton' type='button' id="T"  value="T" onClick={(e) => handleChange(e)}>T</button>
+        <button className='keyboardButton' type='button' id="Y"  value="Y" onClick={(e) => handleChange(e)}>Y</button>
+        <button className='keyboardButton' type='button' id="U"  value="U" onClick={(e) => handleChange(e)}>U</button>
+        <button className='keyboardButton' type='button' id="I"  value="I" onClick={(e) => handleChange(e)}>I</button>
+        <button className='keyboardButton' type='button' id="O"  value="O" onClick={(e) => handleChange(e)}>O</button>
+        <button className='keyboardButton' type='button' id="P"  value="P" onClick={(e) => handleChange(e)}>P</button>
+      </div>
+      <div type='button' id="secondRow">
+        <button className='keyboardButton' type='button' id="A"  value="A" onClick={(e) => handleChange(e)}>A</button>
+        <button className='keyboardButton' type='button' id="S"  value="S" onClick={(e) => handleChange(e)}>S</button>
+        <button className='keyboardButton' type='button' id="D"  value="D" onClick={(e) => handleChange(e)}>D</button>
+        <button className='keyboardButton' type='button' id="F"  value="F" onClick={(e) => handleChange(e)}>F</button>
+        <button className='keyboardButton' type='button' id="G"  value="G" onClick={(e) => handleChange(e)}>G</button>
+        <button className='keyboardButton' type='button' id="H"  value="H" onClick={(e) => handleChange(e)}>H</button>
+        <button className='keyboardButton' type='button' id="J"  value="J" onClick={(e) => handleChange(e)}>J</button>
+        <button className='keyboardButton' type='button' id="K"  value="K" onClick={(e) => handleChange(e)}>K</button>
+        <button className='keyboardButton' type='button' id="L"  value="L" onClick={(e) => handleChange(e)}>L</button>
+      </div>
+      <div type='button' id="thirdRow">
+        <button className='keyboardButton' type='button' id="ENT"  value="Z" onClick={handleSubmit}>ENT</button>
+        <button className='keyboardButton' type='button' id="Z"  value="Z" onClick={(e) => handleChange(e)}>Z</button>
+        <button className='keyboardButton' type='button' id="X"  value="X" onClick={(e) => handleChange(e)}>X</button>
+        <button className='keyboardButton' type='button' id="C"  value="C" onClick={(e) => handleChange(e)}>C</button>
+        <button className='keyboardButton' type='button' id="V"  value="V" onClick={(e) => handleChange(e)}>V</button>
+        <button className='keyboardButton' type='button' id="B"  value="B" onClick={(e) => handleChange(e)}>B</button>
+        <button className='keyboardButton' type='button' id="N"  value="N" onClick={(e) => handleChange(e)}>N</button>
+        <button className='keyboardButton' type='button' id="M"  value="M" onClick={(e) => handleChange(e)}>M</button>
+        <button className='keyboardButton' type='button' id="DEL"  value="DEL" onClick={(e) => handleChange(e)}>DEL</button>
+      </div>
+  </div>
+
+
             <div style={{width: '100%', marginTop: '10px'}}>
-        <button type='submit' style={{backgroundColor: 'transparent', fontSize: '20px', marginTop: '25px', color: 'white', border: '1px solid white', borderRadius: '5px', padding: '5px', width: '100px', margin: '0px auto'}}>Guess</button>
+       {/*} <button type='submit' style={{backgroundColor: 'transparent', fontSize: '20px', marginTop: '25px', color: 'white', border: '1px solid white', borderRadius: '5px', padding: '5px', width: '100px', margin: '0px auto'}}>Guess</button>*/}
         </div>
         </form>
             
@@ -134,7 +183,7 @@ export function Buttons() {
         <div id='guessTab'>
             <div id='revealTab' style={{color: 'white'}} onClick={handleReveal} >/\ previous guesses /\</div>
             
-       <div id='guessContainer' style={{display: 'none', flexWrap: 'wrap'}}>{prevGuesses.length === 0 ?  <div style={{  display: 'flex', width: '100%',  flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'black', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{ display: 'flex',marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
+       <div id='guessContainer' style={{display: 'none', flexWrap: 'wrap'}}>{prevGuesses.length === 0 ?  <div style={{  display: 'flex', width: '100%',color: 'white',  flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{ display: 'flex',marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
             </div>)}</div>
                 </div>
         </div>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+  <div id="keyboardCont">
+      <input id="entry" type="text">
+      <div id="firstRow">
+        <button id="Q" class="key" value="Q" onclick="makeLetter(this)">Q</button>
+        <button id="W" class="key" value="W" onclick="makeLetter(this)">W</button>
+        <button id="E" class="key" value="E" onclick="makeLetter(this)">E</button>
+        <button id="R" class="key" value="R" onclick="makeLetter(this)">R</button>
+        <button id="T" class="key" value="T" onclick="makeLetter(this)">T</button>
+        <button id="Y" class="key" value="Y" onclick="makeLetter(this)">Y</button>
+        <button id="U" class="key" value="U" onclick="makeLetter(this)">U</button>
+        <button id="I" class="key" value="I" onclick="makeLetter(this)">I</button>
+        <button id="O" class="key" value="O" onclick="makeLetter(this)">O</button>
+        <button id="P" class="key" value="P" onclick="makeLetter(this)">P</button>
+      </div>
+      <div id="secondRow">
+        <button id="A" class="key" value="A" onclick="makeLetter(this)">A</button>
+        <button id="S" class="key" value="S" onclick="makeLetter(this)">S</button>
+        <button id="D" class="key" value="D" onclick="makeLetter(this)">D</button>
+        <button id="F" class="key" value="F" onclick="makeLetter(this)">F</button>
+        <button id="G" class="key" value="G" onclick="makeLetter(this)">G</button>
+        <button id="H" class="key" value="H" onclick="makeLetter(this)">H</button>
+        <button id="J" class="key" value="J" onclick="makeLetter(this)">J</button>
+        <button id="K" class="key" value="K" onclick="makeLetter(this)">K</button>
+        <button id="L" class="key" value="L" onclick="makeLetter(this)">L</button>
+      </div>
+      <div id="thirdRow">
+        <button id="ENT" class="key" value="Z" onclick="makeLetter(this)">ENT</button>
+        <button id="Z" class="key" value="Z" onclick="makeLetter(this)">Z</button>
+        <button id="X" class="key" value="X" onclick="makeLetter(this)">X</button>
+        <button id="C" class="key" value="C" onclick="makeLetter(this)">C</button>
+        <button id="V" class="key" value="V" onclick="makeLetter(this)">V</button>
+        <button id="B" class="key" value="B" onclick="makeLetter(this)">B</button>
+        <button id="N" class="key" value="N" onclick="makeLetter(this)">N</button>
+        <button id="M" class="key" value="M" onclick="makeLetter(this)">M</button>
+        <button id="DEL" class="key" value="Z" onclick="makeLetter(this)">DEL</button>
+      </div>
+  </div>
+
+
+<script >
+  function makeLetter(myValue) {
+    console.log('clicked')
+    document.getElementById('entry').value += myValue.value
+}
+</script>
+
+</body>
+</html>

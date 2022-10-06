@@ -1,0 +1,36 @@
+body, html {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.keyboardButton {
+    width: 9vw;
+    height: 12vw;
+    background-color: 'green';
+    margin: .5vw;
+    text-align: center;
+}
+
+#firstRow {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 5px 0px;
+}
+#secondRow {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 5px 0px;
+}
+#thirdRow {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#DEL, #ENT {
+    width: 12vw;
+}
+
