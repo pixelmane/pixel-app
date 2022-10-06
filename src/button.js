@@ -75,7 +75,15 @@ export function Buttons() {
         document.getElementById('formBackground').style.display = 'none'
        
     }
-  
+    function handleReveal() {
+        if( document.getElementById('guessContainer').style.display === 'none'){
+        document.getElementById('guessContainer').style.display = 'flex'
+        document.getElementById('revealTab').innerHTML = 'close'
+        } else {
+            document.getElementById('guessContainer').style.display = 'none'
+            document.getElementById('revealTab').innerHTML = '^ previous guesses ^'
+        }
+    }
     return(
         <div>
             <h3 style={{marginTop: '5px', marginBottom: '5px'}}>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
@@ -96,11 +104,11 @@ export function Buttons() {
         <form id='submitFormContainer' onSubmit={handleSubmit}>
             
         
-           {prevGuesses.length === 0 ?  <div style={{width: '100%', display: 'flex', flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{display: 'flex', marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
-            </div>)}
+           {/*{prevGuesses.length === 0 ?  <div style={{width: '100%', display: 'flex', flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{display: 'flex', marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
+            </div>)}*/}
            
             <div style={{display: 'flex', marginTop: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>
-            {checkArray.map((element, index) => <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{guessArray[index] ? guessArray[index] : null}</div>)}
+            {checkArray.map((element, index) => <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{guessArray[index] ? guessArray[index] : '?'}</div>)}
             
             </div>
             <input maxLength={rightAnswerArray.length} value={guess} id='focus' onChange={handleChange} type='text' placeholder="thoughts?" />
@@ -109,8 +117,9 @@ export function Buttons() {
         <button type='submit' style={{backgroundColor: 'transparent', fontSize: '20px', marginTop: '25px', color: 'white', border: '1px solid white', borderRadius: '5px', padding: '5px', width: '100px', margin: '0px auto'}}>Guess</button>
         </div>
         </form>
-       
+            
         </div>
+       
         </div>
        
        
@@ -122,6 +131,12 @@ export function Buttons() {
             </div>
             <h2 style={{fontSize: '4vw'}}>add pixel colors -> guess image</h2>
         <div id='decoy'><img alt='mystery' src={decoy} style={{width: '70%', aspectRatio: '1 / 1'}}/></div>
+        <div id='guessTab'>
+            <div id='revealTab' style={{color: 'white'}} onClick={handleReveal} >/\ previous guesses /\</div>
+            
+       <div id='guessContainer' style={{display: 'none', flexWrap: 'wrap'}}>{prevGuesses.length === 0 ?  <div style={{  display: 'flex', width: '100%',  flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'black', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{ display: 'flex',marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
+            </div>)}</div>
+                </div>
         </div>
     )
 }
