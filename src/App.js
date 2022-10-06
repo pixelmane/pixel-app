@@ -15,7 +15,7 @@ function App() {
   
   return (
     <div className="App">
-      <div style={{display: 'flex', justifyContent: 'center', marginTop: '15px',  fontWeight: 'bold', fontSize: '30px'}}>
+      <div style={{display: 'flex', justifyContent: 'center', marginTop: '5px',  fontWeight: 'bold', fontSize: '30px'}}>
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '1.5px', marginRight: '1.5px', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', border: '2px solid white', height: '50px', width: '50px'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '1.5px', marginRight: '1.5px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', height: '50px', width: '50px'}}>{element}</div>)}
             
             </div>
