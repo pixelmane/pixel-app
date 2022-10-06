@@ -11,7 +11,7 @@ function App() {
     const checkArray = useSelector(state => state.squares.checkArray)
   const alive = useSelector(state => state.squares.alive)
  
-  const guesses = useSelector(state => state.squares.guesses)
+  
   
   return (
     <div className="App">
