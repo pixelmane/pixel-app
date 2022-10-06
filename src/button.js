@@ -125,7 +125,7 @@ export function Buttons() {
             <input maxLength={rightAnswerArray.length} value={guess} id='focus' onChange={handleChange} type='text' placeholder="thoughts?" />
             <div type='button' id="keyboardCont">
       
-      <div type='button' id="firstRow">
+      <div  id="firstRow">
         <button className='keyboardButton' type='button' id="Q"  value="Q" onClick={(e) => handleChange(e)}>Q</button>
         <button className='keyboardButton' type='button' id="W"  value="W" onClick={(e) => handleChange(e)}>W</button>
         <button className='keyboardButton' type='button' id="E"  value="E" onClick={(e) => handleChange(e)}>E</button>
@@ -137,7 +137,7 @@ export function Buttons() {
         <button className='keyboardButton' type='button' id="O"  value="O" onClick={(e) => handleChange(e)}>O</button>
         <button className='keyboardButton' type='button' id="P"  value="P" onClick={(e) => handleChange(e)}>P</button>
       </div>
-      <div type='button' id="secondRow">
+      <div  id="secondRow">
         <button className='keyboardButton' type='button' id="A"  value="A" onClick={(e) => handleChange(e)}>A</button>
         <button className='keyboardButton' type='button' id="S"  value="S" onClick={(e) => handleChange(e)}>S</button>
         <button className='keyboardButton' type='button' id="D"  value="D" onClick={(e) => handleChange(e)}>D</button>
@@ -148,7 +148,7 @@ export function Buttons() {
         <button className='keyboardButton' type='button' id="K"  value="K" onClick={(e) => handleChange(e)}>K</button>
         <button className='keyboardButton' type='button' id="L"  value="L" onClick={(e) => handleChange(e)}>L</button>
       </div>
-      <div type='button' id="thirdRow">
+      <div  id="thirdRow">
         <button className='keyboardButton' type='button' id="ENT"  value="Z" onClick={handleSubmit}>ENT</button>
         <button className='keyboardButton' type='button' id="Z"  value="Z" onClick={(e) => handleChange(e)}>Z</button>
         <button className='keyboardButton' type='button' id="X"  value="X" onClick={(e) => handleChange(e)}>X</button>
