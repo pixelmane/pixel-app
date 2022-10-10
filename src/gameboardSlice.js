@@ -97,6 +97,7 @@ const gameboardSlice = createSlice({
           }  
         },
         revealSquares: (state, action) => {
+            
             state.attempts +=1
             for(let j = 0; j < state.experiment.length; j++){
                 if(state.experiment[j].color === action.payload.color){
