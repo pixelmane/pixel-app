@@ -99,10 +99,10 @@ export function Buttons() {
     }
     return(
         <div>
-            <h3 style={{marginTop: '5px', marginBottom: '5px'}}>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
+            <h3 style={{color: 'white', marginTop: '5px', marginBottom: '5px'}}>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
             
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'wrap'}}>
-            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div style={{ borderRadius: '50%', color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid grey', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color, display: 'grid', alignItems: 'center'}} ></div> : <div style={{ order: randomNumber(),border: '2px solid black', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
+            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div style={{ borderRadius: '50%', color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid white', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color, display: 'grid', alignItems: 'center'}} ></div> : <div style={{ order: randomNumber(),border: '2px solid white', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
             {/*<div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
         </div>
        
@@ -180,7 +180,7 @@ export function Buttons() {
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}
             
             </div>
-            <h2 style={{fontSize: '4vw'}}>add pixel colors -> guess image</h2>
+            <h2 style={{fontSize: '4vw', color: 'white'}}>add pixel colors -> guess image</h2>
         <div id='decoy'><img alt='mystery' src={decoy} style={{width: '70%', aspectRatio: '1 / 1'}}/></div>
         <div id='guessTab'>
             <div id='revealTab' style={{color: 'white'}} onClick={handleReveal} >^ previous guesses ^</div>

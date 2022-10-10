@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux"
-import { revealColor } from './gameboardSlice.js'
+import { useSelector } from "react-redux"
+
 
 export function Gameboard() {
     return(
@@ -21,21 +21,18 @@ function Squares(){
         
     }
     return (
-        <div id="squares" style={{boxShadow: '0px 2px 7px black'}}>
+        <div id="squares" >
             {squareArray.map((element, index) => createTheSquares(element, index))}
         </div>
     )
 }
 
 function Square( props ) {
-    let dispatch = useDispatch();
+   
     
-    function handleClick(index){
-        console.log(`my index is ${index}`)
-        dispatch(revealColor(index))
-    }
+   
     return (
-    <div onClick={() => handleClick(props.index)} style={{fontSize: '1vw',color: 'grey', boxSizing: 'border-box',border: props.border, backgroundColor: props.color}} className='square'>
+    <div style={{fontSize: '1vw',color: 'grey', boxSizing: 'border-box',border: props.border, backgroundColor: props.color}} className='square'>
        {props.reveal ? "" : '?'}
     </div>
 )

@@ -21,7 +21,7 @@ function Squares(){
         
     }
     return (
-        <div id="squares"  >
+        <div id="squares"  style={{border: 'none', backgroundColor: 'transparent'}}>
             {squareArray.map((element, index) => createTheSquares(element, index))}
         </div>
     )
