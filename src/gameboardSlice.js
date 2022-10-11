@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 // eslint-disable-next-line
-import  { bowser, yoshi }  from './collection.js';
+import  { collection, bowser, yoshi }  from './collection.js';
 
 const gameboardSlice = createSlice({
     name: 'squares',
     initialState: {
-        colorArray: yoshi
+        colorArray: collection[0].colors
             ,
         colorsAvailable: [{color: "000000",
                             clicked: false, tiles: 0},
@@ -29,7 +30,8 @@ const gameboardSlice = createSlice({
         guesses: 0,
         guessTracker: [],
         experiment: [],
-        answer: 'YOSHI',
+        numberOfColumns: collection[0].numberOfColumns,
+        answer: collection[0].name,
         answerArray: [],
         alive: true,
         selected: [],
@@ -38,10 +40,30 @@ const gameboardSlice = createSlice({
         guessedAnswer: [],
         checkArray: [],
         previousGuesses: [],
-        revealedCheckArray: []
+        revealedCheckArray: [],
+        gaveUp: false
         
     },
     reducers:{
+        giveUp: (state, action) => {
+            state.gaveUp = true
+        },
+        revive: (state, action) => {
+            state.alive = true
+            state.guessTracker = []
+            state.guessedAnswer = []
+            state.checkArray = []
+            state.previousGuesses = []
+            state.revealedCheckArray = []
+            state.experiment = []
+            state.gaveUp = false
+            state.squaresRevealed = 0
+        },
+        setNumber: (state, action) => {
+            state.colorArray = collection[action.payload].colors
+            state.numberOfColumns = collection[action.payload].numberOfColumns
+            state.answer = collection[action.payload].name
+        },
         buildCheckArray: (state, action) => {
             state.answerArray = Array.from(state.answer)
             for (let n = 0; n < state.answerArray.length; n++){
@@ -122,5 +144,5 @@ const gameboardSlice = createSlice({
     
 })
 
-export const { buildCheckArray, checkAnswer, buildColorArray, createBoard, revealColor, revealSquares } = gameboardSlice.actions
+export const { giveUp, revive, setNumber, buildCheckArray, checkAnswer, buildColorArray, createBoard, revealColor, revealSquares } = gameboardSlice.actions
 export default gameboardSlice.reducer

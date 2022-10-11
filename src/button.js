@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { checkAnswer, revealSquares, buildColorArray, buildCheckArray } from './gameboardSlice.js';
+import { giveUp, setNumber, checkAnswer, revealSquares, buildColorArray, buildCheckArray } from './gameboardSlice.js';
 import { Gameboard } from "./gameboard.js";
 import decoy from './decoy.png'
 // eslint-disable-next-line
 import image from './brush.png'
 
 
-export function Buttons() {
+export function Buttons( { number } ) {
     const [guess, setGuess] = useState('')
     const guessArray = Array.from(guess)
     const dispatch = useDispatch();
@@ -19,6 +19,7 @@ export function Buttons() {
     const fakeColor = useSelector(state => state.squares.fakeColor)
     const checkArray = useSelector(state => state.squares.checkArray)
     const prevGuesses = useSelector(state => state.squares.previousGuesses)
+    const numberOfColumns = useSelector(state => state.squares.numberOfColumns)
     //rightAnswerArray.forEach((element, index) => checkArray.push({wrong: '?', right: rightAnswerArray[index],correct: false, }))
    
    function handleClick(element, index){
@@ -47,13 +48,17 @@ export function Buttons() {
     useEffect(() => 
     { handleBuild()}
          // eslint-disable-next-line
-    , [])
+    , [number])
     function handleBuild(){
+        dispatch(setNumber(number))
         dispatch(buildColorArray())
        
         dispatch(buildCheckArray(checkArray))
         console.log(colorOptions)
         console.log(guess)
+        var root = document.querySelector(':root')
+        root.style.setProperty('--columns', numberOfColumns)
+        
     }
     function handleChange(e){
         if(guess.length < rightAnswerArray.length && e.target.value !== 'DEL'){
@@ -79,7 +84,10 @@ export function Buttons() {
         }
         setGuess('')
     }
-    
+    function handleGiveUp(){
+        dispatch(checkAnswer(rightAnswer))
+        dispatch(giveUp())
+    }
     function handleCloseGuess() {
         document.getElementById('formBackground').style.display = 'none'
        
@@ -88,6 +96,7 @@ export function Buttons() {
         if( document.getElementById('guessContainer').style.display === 'none'){
         document.getElementById('guessContainer').style.display = 'flex'
         document.getElementById('revealTab').innerHTML = 'close'
+        
         } else {
             document.getElementById('guessContainer').style.display = 'none'
             document.getElementById('revealTab').innerHTML = '^ previous guesses ^'
@@ -105,7 +114,7 @@ export function Buttons() {
             {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div style={{ borderRadius: '50%', color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid white', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color, display: 'grid', alignItems: 'center'}} ></div> : <div style={{ order: randomNumber(),border: '2px solid white', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
             {/*<div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
         </div>
-       
+       <button style={{padding: '5px', margin: '10px auto'}} onClick={handleGiveUp}>give up</button>
        
         <div id='formBackground'>
         <div style={{width: '100%'}}>
@@ -185,7 +194,7 @@ export function Buttons() {
         <div id='guessTab'>
             <div id='revealTab' style={{color: 'white'}} onClick={handleReveal} >^ previous guesses ^</div>
             
-       <div id='guessContainer' style={{display: 'none', flexWrap: 'wrap'}}>{prevGuesses.length === 0 ?  <div style={{  display: 'flex', width: '100%',color: 'white',  flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{ display: 'flex',marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
+       <div id='guessContainer' style={{display: 'none', flexWrap: 'wrap' , maxHeight:'300px', overflowY: 'scroll'}}>{prevGuesses.length === 0 ?  <div style={{display: 'flex', width: '100%',color: 'white',  flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{ display: 'flex', marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
             </div>)}</div>
                 </div>
         </div>

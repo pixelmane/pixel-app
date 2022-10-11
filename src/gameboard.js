@@ -1,7 +1,11 @@
+
+
 import { useSelector } from "react-redux"
 
 
-export function Gameboard() {
+export function Gameboard( {number} ) {
+    
+    
     return(
         <div style={{marginTop: '5px'}}>
             <Squares />
