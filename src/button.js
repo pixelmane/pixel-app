@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { giveUp, setNumber, checkAnswer, revealSquares, buildColorArray, buildCheckArray } from './gameboardSlice.js';
 import { Gameboard } from "./gameboard.js";
 import decoy from './decoy.png'
+import  Moment from 'moment';
 // eslint-disable-next-line
 import image from './brush.png'
 
@@ -20,6 +21,7 @@ export function Buttons( { number } ) {
     const checkArray = useSelector(state => state.squares.checkArray)
     const prevGuesses = useSelector(state => state.squares.previousGuesses)
     const numberOfColumns = useSelector(state => state.squares.numberOfColumns)
+    const edition = useSelector(state => state.squares.edition)
     //rightAnswerArray.forEach((element, index) => checkArray.push({wrong: '?', right: rightAnswerArray[index],correct: false, }))
    
    function handleClick(element, index){
@@ -108,14 +110,17 @@ export function Buttons( { number } ) {
     }
     return(
         <div>
-            <h3 style={{color: 'white', marginTop: '5px', marginBottom: '5px'}}>Pixels uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
+            <h2 style={{marginBottom: '3px',fontSize: '4vw', color: 'white'}}>Dyspixel #{edition} - {Moment().subtract(number, 'days').format('MMM Do YYYY')}</h2>
+        
             
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'wrap'}}>
             {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div style={{ borderRadius: '50%', color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid white', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color, display: 'grid', alignItems: 'center'}} ></div> : <div style={{ order: randomNumber(),border: '2px solid white', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
             {/*<div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
         </div>
-       <button style={{padding: '5px', margin: '10px auto'}} onClick={handleGiveUp}>give up</button>
-       
+       <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '60px', marginBottom: '50px'}}>
+       <button style={{width: '80px', height: '30px', padding: '5px', margin: '10px auto'}} onClick={handleGiveUp}>give up</button>
+       <h3 style={{width: '50%', color: 'white'}}>Uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
+       </div>
         <div id='formBackground'>
         <div style={{width: '100%'}}>
         <Gameboard />
@@ -189,8 +194,7 @@ export function Buttons( { number } ) {
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}
             
             </div>
-            <h2 style={{fontSize: '4vw', color: 'white'}}>add pixel colors -> guess image</h2>
-        <div id='decoy'><img alt='mystery' src={decoy} style={{width: '70%', aspectRatio: '1 / 1'}}/></div>
+                 <div id='decoy'><img alt='mystery' src={decoy} style={{width: '70%', aspectRatio: '1 / 1'}}/></div>
         <div id='guessTab'>
             <div id='revealTab' style={{color: 'white'}} onClick={handleReveal} >^ previous guesses ^</div>
             

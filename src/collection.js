@@ -2901,6 +2901,7 @@ export const yoshi = [{color:"#01c7fc",revealed:false},
 {color:"#01c7fc",revealed:false}]
 
 export const collection = [{name: 'goomba',
+                        edition: 3,
                         numberOfColumns: 18,
                         colors: [{color:"#f4a4c0",revealed:false},
                         {color:"#f4a4c0",revealed:false},
@@ -3228,6 +3229,7 @@ export const collection = [{name: 'goomba',
                         {color:"#f4a4c0",revealed:false}]
                         },
                     {name: 'bowser',
+                    edition: 2,
                     numberOfColumns: 46,
                     colors:  [{color:"#c2e2ff",revealed:false},
                     {color:"#c2e2ff",revealed:false},
@@ -5346,6 +5348,7 @@ export const collection = [{name: 'goomba',
                     {color:"#c2e2ff",revealed:false},
                     {color:"#c2e2ff",revealed:false}]},
                     {name: 'yoshi',
+                    edition: 1,
                     numberOfColumns: 28
                     ,
                     colors: [{color:"#01c7fc",revealed:false},

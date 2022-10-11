@@ -7,7 +7,7 @@ export function Gameboard( {number} ) {
     
     
     return(
-        <div style={{marginTop: '5px'}}>
+        <div>
             <Squares />
             
         </div>

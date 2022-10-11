@@ -6,7 +6,7 @@ import  { collection, bowser, yoshi }  from './collection.js';
 const gameboardSlice = createSlice({
     name: 'squares',
     initialState: {
-        colorArray: collection[0].colors
+        colorArray: collection[collection.length-1].colors
             ,
         colorsAvailable: [{color: "000000",
                             clicked: false, tiles: 0},
@@ -30,8 +30,8 @@ const gameboardSlice = createSlice({
         guesses: 0,
         guessTracker: [],
         experiment: [],
-        numberOfColumns: collection[0].numberOfColumns,
-        answer: collection[0].name,
+        numberOfColumns: collection[collection.length-1].numberOfColumns,
+        answer: collection[collection.length -1].name,
         answerArray: [],
         alive: true,
         selected: [],
@@ -41,7 +41,8 @@ const gameboardSlice = createSlice({
         checkArray: [],
         previousGuesses: [],
         revealedCheckArray: [],
-        gaveUp: false
+        gaveUp: false,
+        edition: collection[collection.length - 1].edition
         
     },
     reducers:{
@@ -64,6 +65,7 @@ const gameboardSlice = createSlice({
             state.colorArray = collection[action.payload].colors
             state.numberOfColumns = collection[action.payload].numberOfColumns
             state.answer = collection[action.payload].name
+            state.edition = collection[action.payload].edition
         },
         buildCheckArray: (state, action) => {
             state.answerArray = Array.from(state.answer)
