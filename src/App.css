@@ -189,7 +189,10 @@ form {
 #keyboardCont {
   width: 100%;
 }
-
+button {
+  border-radius: 5px;
+  -webkit-appearance: none;
+}
 .keyboardButton {
  display: grid;
  justify-content: center;
