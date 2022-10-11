@@ -220,7 +220,7 @@ form {
   color: white;
   width: 8vw;
   height: 12vw;
- 
+ border-radius: 5px;
   margin: .5vw;
   text-align: center;
   font-size: 16px;
