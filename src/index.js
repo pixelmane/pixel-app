@@ -7,13 +7,13 @@ import { Provider} from 'react-redux';
 import store from './store.js';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
-
+import { Start } from './start';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <Provider store={store}>
             <Routes>
-                
+                <Route path='/' element={<Start />}/>
                 <Route path="/:number" element={<App />} >
                 
                 </Route>

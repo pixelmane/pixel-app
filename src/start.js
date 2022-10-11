@@ -5,7 +5,7 @@ export function Start() {
     
     return (
         <div>
-            {collection.map((element,index) => <Link to={`/${index}`}><button>{index}</button></Link> )}        
+            <Link to='0'><button>start</button></Link>    
         </div>
     )
 }
