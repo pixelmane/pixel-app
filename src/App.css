@@ -191,7 +191,7 @@ form {
 }
 button {
   border-radius: 5px;
- 
+  -webkit-appearance: none;
 }
 .keyboardButton {
  display: grid;
