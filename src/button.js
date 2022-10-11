@@ -110,7 +110,7 @@ export function Buttons( { number } ) {
     }
     return(
         <div>
-            <h2 style={{marginBottom: '3px',fontSize: '4vw', color: 'white'}}>Dyspixel #{edition} - {Moment().subtract(number, 'days').format('MMM Do YYYY')}</h2>
+            <h2 style={{marginBottom: '3px',fontSize: '4vw', color: 'white'}}>Dyspixel #{Number(number) + 1} - {Moment().subtract(edition-1, 'days').format('MMM Do YYYY')}</h2>
         
             
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'wrap'}}>

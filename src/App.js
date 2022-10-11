@@ -51,8 +51,8 @@ function App(  ) {
             </div>)}
             
             <div>
-            <Link  to={`/${Number(number) + 1}`} onClick={handleRevive} > {Number(number) === collection.length -1 ? <button disabled>prev</button> : <button>prev</button>}</Link>    
-            <Link  to={`/${Number(number) - 1}`} onClick={handleRevive} >{Number(number) === 0 ? <h2 style={{fontSize: '16px', color: 'white'}}>next release {Moment().endOf('day').add(9,'hours').fromNow()}</h2> : <button>next</button>}</Link>     
+            <Link  to={`/${Number(number) - 1}`} onClick={handleRevive} > {Number(number) === 0 ? <button disabled>prev</button> : <button>prev</button>}</Link>    
+            <Link  to={`/${Number(number) + 1}`} onClick={handleRevive} >{Number(number) === collection.length -1 ? <h2 style={{fontSize: '16px', color: 'white'}} disabled='true'>next release {Moment().endOf('day').add(9,'hours').fromNow()}</h2> : <button>next</button>}</Link>     
         </div>
           </div>
           
