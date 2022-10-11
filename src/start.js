@@ -1,4 +1,4 @@
-import { collection } from "./collection"
+
 import { Link } from "react-router-dom"
 
 export function Start() {
