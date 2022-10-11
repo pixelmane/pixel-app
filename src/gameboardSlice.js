@@ -58,6 +58,7 @@ const gameboardSlice = createSlice({
             state.experiment = []
             state.gaveUp = false
             state.squaresRevealed = 0
+            state.colors = []
         },
         setNumber: (state, action) => {
             state.colorArray = collection[action.payload].colors
