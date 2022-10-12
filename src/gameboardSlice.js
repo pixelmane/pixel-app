@@ -36,7 +36,7 @@ const gameboardSlice = createSlice({
         alive: true,
         selected: [],
         fakePositioning: 6,
-        fakeColor: 'CYAN',
+        fakeColor: collection[collection.length - 1].fakeColor,
         guessedAnswer: [],
         checkArray: [],
         previousGuesses: [],
@@ -66,6 +66,7 @@ const gameboardSlice = createSlice({
             state.numberOfColumns = collection[action.payload].numberOfColumns
             state.answer = collection[action.payload].name
             state.edition = collection[action.payload].edition
+            state.fakeColor = collection[action.payload].fakeColor
         },
         buildCheckArray: (state, action) => {
             state.answerArray = Array.from(state.answer)

@@ -1,12 +1,15 @@
-import { useDispatch, useSelector } from "react-redux"
-import { revealColor } from './gameboardSlice.js'
+import { useSelector } from "react-redux"
 
-export function EndGameboard() {
+import  Moment  from 'moment';
+import { collection } from './collection.js';
+export function EndGameboard( { number } ) {
+ 
     return(
-        <div style={{marginTop: '10px'}}>
+        <div >
+             <h2 style={{marginBottom: '3px',fontSize: '5vw', color: 'white'}}>Dyspixel #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
+        
             <Squares />
-            
-        </div>
+              </div>
     )
 }
 
@@ -28,14 +31,10 @@ function Squares(){
 }
 
 function Square( props ) {
-    let dispatch = useDispatch();
-    
-    function handleClick(index){
-        console.log(`my index is ${index}`)
-        dispatch(revealColor(index))
-    }
+  
+  
     return (
-    <div onClick={() => handleClick(props.index)} style={{backgroundColor: props.color}} className='square'>
+    <div style={{backgroundColor: props.color}} className='square'>
        
     </div>
 )

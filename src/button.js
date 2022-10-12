@@ -4,6 +4,7 @@ import { giveUp, setNumber, checkAnswer, revealSquares, buildColorArray, buildCh
 import { Gameboard } from "./gameboard.js";
 import decoy from './decoy.png'
 import  Moment from 'moment';
+import { collection } from "./collection.js";
 // eslint-disable-next-line
 import image from './brush.png'
 
@@ -21,7 +22,7 @@ export function Buttons( { number } ) {
     const checkArray = useSelector(state => state.squares.checkArray)
     const prevGuesses = useSelector(state => state.squares.previousGuesses)
     const numberOfColumns = useSelector(state => state.squares.numberOfColumns)
-    const edition = useSelector(state => state.squares.edition)
+   
     //rightAnswerArray.forEach((element, index) => checkArray.push({wrong: '?', right: rightAnswerArray[index],correct: false, }))
    
    function handleClick(element, index){
@@ -110,7 +111,7 @@ export function Buttons( { number } ) {
     }
     return(
         <div>
-            <h2 style={{marginBottom: '3px',fontSize: '4vw', color: 'white'}}>Dyspixel #{Number(number) + 1} - {Moment().subtract(edition-1, 'days').format('MMM Do YYYY')}</h2>
+            <h2 style={{marginBottom: '3px',fontSize: '4vw', color: 'white'}}>Dyspixel #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
         
             
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'wrap'}}>
