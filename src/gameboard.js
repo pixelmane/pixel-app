@@ -33,10 +33,10 @@ function Squares(){
 
 function Square( props ) {
    
-    
+    let numberOfColumns = useSelector(state => state.squares.numberOfColumns)
    
     return (
-    <div style={{aspectRatio: '1 / 1',fontSize: '1vw',color: 'grey', boxSizing: 'border-box',border: props.border, backgroundColor: props.color}} className='square'>
+    <div style={{width: `${100/numberOfColumns}%`, aspectRatio: '1 / 1',fontSize: '1vw',color: 'grey', boxSizing: 'border-box',border: props.border, backgroundColor: props.color}} className='square'>
        {props.reveal ? "" : '?'}
     </div>
 )
