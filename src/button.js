@@ -5,6 +5,7 @@ import { Gameboard } from "./gameboard.js";
 import decoy from './decoy.png'
 import  Moment from 'moment';
 import { collection } from "./collection.js";
+import check from './check.png';
 // eslint-disable-next-line
 import image from './brush.png'
 
@@ -31,17 +32,17 @@ export function Buttons( { number } ) {
                                 index: index}))
                                 
         
-        setTimeout(() => {
+       
             document.getElementById('formBackground').style.display = 'block'
             document.getElementById('focus').focus()
-        },100)
+        
         console.log(element.color)
         console.log(fakeColor)
         if (element.color === fakeColor){
             console.log('they match')
             document.getElementById('decoy').style.display = 'flex'
 
-        }
+        } 
         setTimeout(() => {
             document.getElementById('decoy').style.display = 'none'
    }, 1500)
@@ -115,13 +116,15 @@ export function Buttons( { number } ) {
         
             
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'nowrap'}}>
-            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div style={{ color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid white', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color, display: 'grid', alignItems: 'center'}} ></div> : <div style={{ order: randomNumber(),border: '2px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
+            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div style={{ color: 'white', stroke: '', margin: '2px', opacity: '1', border: '2px solid white', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color, display: 'flex', justifyContent: 'center', alignItems: 'center'}} ><img alt='checkmark' style={{height: '90%', width: '90%'}} src={check} /></div> : <div style={{ order: randomNumber(),border: '2px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
             {/*<div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
         </div>
        <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '60px', marginBottom: '50px'}}>
        <button style={{width: '80px', height: '30px', padding: '5px', margin: '10px auto'}} onClick={handleGiveUp}>give up</button>
        <h3 style={{width: '50%', color: 'white'}}>Uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
        </div>
+       
+
         <div id='formBackground'>
         <div style={{width: '100%'}}>
         <Gameboard />

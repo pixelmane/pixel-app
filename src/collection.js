@@ -6404,9 +6404,10 @@ export const collection = [
                         {color:"#ee719e",revealed:false}]},
                     {name: 'brian',
                     edition: 5,
-                    fakeColor: 'blue',
+                    fakeColor: 'yellow',
                     numberOfColumns: 46,
-                    colors: [{color:"#008900",revealed:false},
+                    colors: [
+                    {color:"#008900",revealed:false},
                     {color:"#008900",revealed:false},
                     {color:"#008900",revealed:false},
                     {color:"#008900",revealed:false},
@@ -8475,4 +8476,5 @@ export const collection = [
                     {color:"#008900",revealed:false},
                     {color:"#008900",revealed:false},
                     {color:"#008900",revealed:false},
-                    {color:"#008900",revealed:false}]}]
+                    {color:"#008900",revealed:false}]},
+                ]

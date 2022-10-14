@@ -90,7 +90,7 @@ const gameboardSlice = createSlice({
                 
             }
             }
-            state.experiment.splice(state.fakePositioning, 0, {color: state.fakeColor, clicked: false, tiles: 0})
+            state.experiment.splice(1, 0, {color: state.fakeColor, clicked: false, tiles: 0})
             console.log(proxyArray)
         },
         revealColor: (state, action) => {
