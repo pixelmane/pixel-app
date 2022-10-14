@@ -7,15 +7,15 @@ export function Start() {
         <div style={{display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap', margin: '0px auto', padding: '10px', borderRadius: '5px'}}>
             <h1 style={{color: 'white', fontFamily: 'arial'}}>deblockle</h1>
             <div style={{width: '100%', border: '2px solid white', borderRadius: '5px', padding: '5px'}}>
-                <h2 style={{color: 'white'}}>Goal:</h2>
-                <h2 style={{color: 'white', marginLeft: '15px', marginBottom: '10px'}}>Correctly guess pixelated image in as few tries as possible.</h2>
+                <h3 style={{color: 'white', margin: '0px'}}>Goal:</h3>
+                <h3 style={{color: 'white', marginLeft: '15px',marginTop: '0', marginBottom: '10px'}}>Correctly guess pixelated image in as few tries as possible.</h3>
             </div>
             <div style={{width: '100%', border: '2px solid white', borderRadius: '5px', padding: '5px', marginTop: '10px'}}>
-                <h2 style={{color: 'white'}}>How to play:</h2>
-                <h2 style={{color: 'white', marginLeft: '15px', marginBottom: '10px'}}>1. Choose a color square.  Pixels containing chosen color will be revealed.</h2>
-                <h2 style={{color: 'white', marginLeft: '15px', marginBottom: '10px'}}>2. After each color reveal, you will have an opportunity to guess the image. Correct letters will appear green.</h2>
-                <h2 style={{color: 'white', marginLeft: '15px', marginBottom: '10px'}}>3. Repeat until you guess correctly or give up.</h2>
-            
+                <h3 style={{color: 'white', margin: '0px'}}>How to play:</h3>
+                <h3 style={{color: 'white',marginTop: '0px', marginLeft: '15px'}}>1. Choose a color square.  Pixels containing chosen color will be revealed.</h3>
+                <h3 style={{color: 'white', marginLeft: '15px'}}>2. After each color reveal, you will have an opportunity to guess the image. Correct letters will appear green.</h3>
+                <h3 style={{color: 'white', marginLeft: '15px'}}>3. Repeat until you guess correctly or give up.</h3>
+                <h4 style={{color: 'white'}}>p.s. - one color is a decoy and will not reveal any pixels...</h4>
             </div>
             <Link to={starter.toString()} ><button style={{marginTop: '10px', padding: '3px 10px'}}>start</button></Link>    
         </div>
