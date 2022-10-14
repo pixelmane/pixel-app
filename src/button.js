@@ -111,11 +111,11 @@ export function Buttons( { number } ) {
     }
     return(
         <div>
-            <h2 style={{marginBottom: '3px',fontSize: '4vw', color: 'white'}}>Dyspixel #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
+            <h2 style={{marginBottom: '3px',fontSize: '4vw', color: 'white'}}>deblockle #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
         
             
-        <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'wrap'}}>
-            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div style={{ borderRadius: '50%', color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid white', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color, display: 'grid', alignItems: 'center'}} ></div> : <div style={{ order: randomNumber(),border: '2px solid white', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
+        <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'nowrap'}}>
+            {colorOptions === undefined ? <p>no color</p> : colorOptions.map((element, index) => element.clicked ? <div style={{ color: 'white', stroke: '', margin: '2px', opacity: '.3', border: '2px solid white', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color, display: 'grid', alignItems: 'center'}} ></div> : <div style={{ order: randomNumber(),border: '2px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center',margin: '2px', width: '50px', aspectRatio: '1 / 1', backgroundColor: element.color}} onClick={() => handleClick(element, index)} >{/*<img alt='imageToGuess' src={image} style={{height: '20px', width: '20px'}}/>*/}</div>)}
             {/*<div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
         </div>
        <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '60px', marginBottom: '50px'}}>
