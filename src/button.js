@@ -199,7 +199,7 @@ export function Buttons( { number } ) {
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white',width: `min(${100/checkArray.length}%, 65px)`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `min(${100/checkArray.length}%, 65px)`, aspectRatio: '1 / 1'}}>{element}</div>)}
             
             </div>
-                 <div id='decoy'><img alt='mystery' src={decoy} style={{width: '70%', aspectRatio: '1 / 1'}}/></div>
+                 <div id='decoy'><img alt='mystery' src={decoy} style={{width: 'min(70%, 280px)', aspectRatio: '1 / 1'}}/></div>
         <div id='guessTab' style={{maxWidth: '400px', margin: '0 auto'}}>
             <div id='revealTab' style={{color: 'white'}} onClick={handleReveal} >^ previous guesses ^</div>
             
