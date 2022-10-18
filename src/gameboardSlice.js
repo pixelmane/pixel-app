@@ -42,10 +42,18 @@ const gameboardSlice = createSlice({
         previousGuesses: [],
         revealedCheckArray: [],
         gaveUp: false,
-        edition: collection[collection.length - 1].edition
+        edition: collection[collection.length - 1].edition,
+        endImage: true
         
     },
     reducers:{
+        toggleImage: (state, action) => {
+            if(state.endImage === true){
+                state.endImage = false
+            } else {
+                state.endImage = true
+            }
+        },
         giveUp: (state, action) => {
             state.gaveUp = true
         },
@@ -60,6 +68,7 @@ const gameboardSlice = createSlice({
             state.gaveUp = false
             state.squaresRevealed = 0
             state.colorArray = []
+            state.endImage = true
         },
         setNumber: (state, action) => {
             state.colorArray = collection[action.payload].colors
@@ -148,5 +157,5 @@ const gameboardSlice = createSlice({
     
 })
 
-export const { giveUp, revive, setNumber, buildCheckArray, checkAnswer, buildColorArray, createBoard, revealColor, revealSquares } = gameboardSlice.actions
+export const { toggleImage, giveUp, revive, setNumber, buildCheckArray, checkAnswer, buildColorArray, createBoard, revealColor, revealSquares } = gameboardSlice.actions
 export default gameboardSlice.reducer

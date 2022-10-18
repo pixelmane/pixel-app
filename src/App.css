@@ -45,7 +45,7 @@
   display: flex;
 
   background-color:black;
-  border: 5px solid black;
+ 
   flex-wrap: wrap;
   justify-content: center;
 
@@ -169,7 +169,17 @@ form {
 #wrongX {
   
 }
-
+#toggleIcon {
+  position: fixed;
+  top: min(85vw, 340px);
+  right: 10%;  
+}
+@media screen and (min-width: 401px) {
+  #toggleIcon {
+    position: 'fixed';
+    right: 50%;
+  }
+}
 #guessTab {
   position: fixed;
   bottom: 0;

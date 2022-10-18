@@ -139,7 +139,7 @@ export function Buttons( { number } ) {
             </div>)}*/}
            
             <div style={{display: 'flex',justifyContent: 'center', fontWeight: 'bold', fontSize: '30px', maxWidth: '400px', margin: '0 auto'}}>
-            {checkArray.map((element, index) => <div style={{ display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${50/checkArray.length}%`, aspectRatio: '1 / 1'}}>{guessArray[index] ? guessArray[index] : '?'}</div>)}
+            {checkArray.map((element, index) => <div style={{ display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{guessArray[index] ? guessArray[index] : '?'}</div>)}
             
             </div>
             <input maxLength={rightAnswerArray.length} value={guess} id='focus' onChange={handleChange} type='text' placeholder="thoughts?" />
