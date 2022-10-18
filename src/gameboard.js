@@ -37,7 +37,7 @@ function Square( props ) {
    
     return (
     <div style={{width: `${100/numberOfColumns}%`, aspectRatio: '1 / 1',fontSize: '1vw',color: 'grey', boxSizing: 'border-box',border: props.border, backgroundColor: props.color}} className='square'>
-       {props.reveal ? "" : '?'}
+       {props.reveal ? "" : ''}
     </div>
 )
 }
