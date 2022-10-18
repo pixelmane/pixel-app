@@ -6,7 +6,7 @@ export function EndGameboard( { number } ) {
  
     return(
         <div >
-             <h2 style={{marginBottom: '3px',fontSize: '5vw', color: 'white'}}>Dyspixel #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
+             <h2 style={{marginBottom: '3px',fontSize: 'min(5vw, 20px)', color: 'white'}}>Deblockle #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
         
             <Squares />
               </div>

@@ -2,6 +2,8 @@
   text-align: center;
   box-sizing: border-box;
   background-color: black;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -171,7 +173,9 @@ form {
 #guessTab {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  
+  width:100%;
+  align-self: center;
   background-color: rgba(138, 137, 137, 0.7);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -188,7 +192,7 @@ form {
   flex-wrap: 'wrap';
 }
 #keyboardCont {
-  
+  margin: 0 auto;
   width: 100%;
 }
 button {
@@ -199,8 +203,8 @@ button {
  display: grid;
  justify-content: center;
  align-items: center;
-  width: 8vw;
-  height: 12vw;
+  width: min(8vw, 32px);
+  height: min(12vw, 48px);
  border-radius: 5px;
   margin: .5vw;
   text-align: center;
@@ -213,8 +217,8 @@ button {
  justify-content: center;
   background-color: black;
   color: white;
-  width: 8vw;
-  height: 12vw;
+  width: min(8vw, 32px);
+  height: min(12vw, 48px);
  border-radius: 5px;
   margin: .5vw;
   text-align: center;
@@ -239,7 +243,8 @@ button {
 }
 
 #DEL, #ENT {
-  width: 12vw;
+  width: min(12vw, 48px);
+  
 }
 
 #focus {

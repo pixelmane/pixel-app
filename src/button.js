@@ -112,7 +112,7 @@ export function Buttons( { number } ) {
     }
     return(
         <div>
-            <h2 style={{marginBottom: '3px',fontSize: '4vw', color: 'white'}}>deblockle #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
+            <h2 style={{marginBottom: '3px',fontSize: 'min(4vw, 16px)', color: 'white'}}>deblockle #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
         
             
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'nowrap'}}>
@@ -125,8 +125,8 @@ export function Buttons( { number } ) {
        </div>
        
 
-        <div id='formBackground'>
-        <div style={{width: '100%'}}>
+        <div id='formBackground' >
+        <div style={{width: '100%', maxWidth: '400px', margin: '0 auto'}}>
         <Gameboard />
         </div>
         
@@ -138,12 +138,12 @@ export function Buttons( { number } ) {
            {/*{prevGuesses.length === 0 ?  <div style={{width: '100%', display: 'flex', flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{display: 'flex', marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
             </div>)}*/}
            
-            <div style={{display: 'flex',justifyContent: 'center', fontWeight: 'bold', fontSize: '30px'}}>
+            <div style={{display: 'flex',justifyContent: 'center', fontWeight: 'bold', fontSize: '30px', maxWidth: '400px', margin: '0 auto'}}>
             {checkArray.map((element, index) => <div style={{ display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${50/checkArray.length}%`, aspectRatio: '1 / 1'}}>{guessArray[index] ? guessArray[index] : '?'}</div>)}
             
             </div>
             <input maxLength={rightAnswerArray.length} value={guess} id='focus' onChange={handleChange} type='text' placeholder="thoughts?" />
-            <div type='button' id="keyboardCont">
+            <div type='button' id="keyboardCont" style={{maxWidth: '400px'}}>
       
       <div  id="firstRow">
         <button className='keyboardButton' type='button' id="Q"  value="Q" onClick={(e) => handleChange(e)}>Q</button>
@@ -195,14 +195,15 @@ export function Buttons( { number } ) {
       
        
         <div id='wrongContainer' style={{width: '100%', justifyContent: 'center', fontWeight: 'bold', fontSize: '30px'}}>
-            {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}
+           
+            {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white',width: `min(${100/checkArray.length}%, 65px)`, aspectRatio: '1 / 1'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `min(${100/checkArray.length}%, 65px)`, aspectRatio: '1 / 1'}}>{element}</div>)}
             
             </div>
                  <div id='decoy'><img alt='mystery' src={decoy} style={{width: '70%', aspectRatio: '1 / 1'}}/></div>
-        <div id='guessTab'>
+        <div id='guessTab' style={{maxWidth: '400px', margin: '0 auto'}}>
             <div id='revealTab' style={{color: 'white'}} onClick={handleReveal} >^ previous guesses ^</div>
             
-       <div id='guessContainer' style={{display: 'none', flexWrap: 'wrap' , maxHeight:'300px', overflowY: 'scroll'}}>{prevGuesses.length === 0 ?  <div style={{display: 'flex', width: '100%',color: 'white',  flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{ display: 'flex', marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
+       <div id='guessContainer' style={{display: 'none', flexWrap: 'wrap' ,  maxHeight:'300px', overflowY: 'scroll', justifyContent: 'center'}}>{prevGuesses.length === 0 ?  <div style={{display: 'flex', width: '90%',color: 'white',  flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{ display: 'flex', marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
             </div>)}</div>
                 </div>
         </div>

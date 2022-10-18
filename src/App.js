@@ -35,7 +35,7 @@ function App(  ) {
     document.getElementById('formBackground').style.display = 'none'
   }
   return (
-    <div className="App">
+    <div className="App" style={{maxWidth: '400px'}}>
       <div style={{display: 'flex', justifyContent: 'center', marginTop: '5px',  fontWeight: 'bold', fontSize: '30px'}}>
             {checkArray.map(element => element === '?' ? <div style={{display: 'flex', marginLeft: '1.5px', marginRight: '1.5px', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', border: '2px solid white', height: '50px', width: '50px'}}>{element}</div> : <div style={{display: 'flex', marginLeft: '1.5px', marginRight: '1.5px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', height: '50px', width: '50px'}}>{element}</div>)}
             
@@ -43,7 +43,7 @@ function App(  ) {
       <Gameboard />
       <Buttons number={number} />
       {!alive ? <div id='endContainer'>
-        <div>
+        <div style={{margin: '0 auto', maxWidth: '400px'}}>
           <div style={{margin: '0 auto', width: '90%', aspectRatio: '1 / 1'}}>
           <EndGameboard number={number}/>
           {gaveUp === false ? null : <h1 style={{marginTop: '5px', marginBottom: '5px', color: 'white'}}>you gave up...</h1> }
