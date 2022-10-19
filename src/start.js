@@ -7,7 +7,8 @@ export function Start() {
         <div style={{display: 'flex', justifyContent: 'center', width: '80%', flexWrap: 'wrap', margin: '0px auto', padding: '10px', borderRadius: '5px', marginTop: '15px'}}>
             <div style={{width: 'min(400px, 100%)'}}><img alt='poplogo' src={poplogo} style={{height: '100%', width: '100%'}}/></div>3
             <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}><Link to={starter.toString()} ><button className='navButton' >start</button></Link></div>
-            <div style={{width: 'min(400px, 100%)', border: '2px solid white', borderRadius: '5px', padding: '5px'}}>
+            <div style={{display: 'block', width: 'min(400px, 100%)'}}>
+                            <div style={{width: 'min(400px, 100%)', border: '2px solid white', borderRadius: '5px', padding: '5px'}}>
                 <h3 style={{color: 'white', margin: '0px'}}>Goal:</h3>
                 <h3 style={{color: 'white', marginLeft: '15px',marginTop: '0', marginBottom: '10px'}}>Correctly guess pixelated image in as few tries as possible.</h3>
             </div>
@@ -18,7 +19,7 @@ export function Start() {
                 <h3 style={{color: 'white', marginLeft: '15px'}}>3. Repeat until you guess correctly or give up.</h3>
                 <h4 style={{color: 'white'}}>p.s. - one color is a decoy and will not reveal any pixels...</h4>
             </div>
-                
+                </div>
         </div>
     )
 }
