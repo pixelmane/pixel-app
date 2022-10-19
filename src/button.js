@@ -103,7 +103,7 @@ export function Buttons( { number } ) {
         
         } else {
             document.getElementById('guessContainer').style.display = 'none'
-            document.getElementById('revealTab').innerHTML = '^ previous guesses ^'
+            document.getElementById('revealTab').innerHTML = 'Previous Guesses'
         }
     }
   
@@ -112,7 +112,7 @@ export function Buttons( { number } ) {
     }
     return(
         <div>
-            <h2 style={{marginBottom: '3px',fontSize: 'min(4vw, 16px)', color: 'white'}}>deblockle #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
+            <h2 style={{marginBottom: '3px',fontSize: 'min(4vw, 16px)', color: 'white'}}>popsquares #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
         
             
         <div style={{width: '100%', justifyContent: 'center', display: 'flex', flexWrap: 'nowrap'}}>
@@ -120,7 +120,7 @@ export function Buttons( { number } ) {
             {/*<div style={{margin: '2px', border: '2px solid grey', width: '100px', aspectRatio: '1 / 1'}} id="openGuess" onClick={handleOpenGuess}>Guess</div>*/}
         </div>
        <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '60px', marginBottom: '50px'}}>
-       <button style={{width: '80px', height: '30px', padding: '5px', margin: '10px auto'}} onClick={handleGiveUp}>give up</button>
+       <button className='navButton' style={{width: '80px', height: '30px', padding: '5px', margin: '10px auto'}} onClick={handleGiveUp}>give up</button>
        <h3 style={{width: '50%', color: 'white'}}>Uncovered: {(squaresRevealed/numberOfSquares.length * 100).toFixed(2)}%</h3>
        </div>
        
@@ -201,7 +201,7 @@ export function Buttons( { number } ) {
             </div>
                  <div id='decoy'><img alt='mystery' src={decoy} style={{width: 'min(70%, 280px)', aspectRatio: '1 / 1'}}/></div>
         <div id='guessTab' style={{maxWidth: '400px', margin: '0 auto'}}>
-            <div id='revealTab' style={{color: 'white'}} onClick={handleReveal} >^ previous guesses ^</div>
+            <div id='revealTab' style={{color: 'white', fontWeight: 'bold'}} onClick={handleReveal} >Previous Guesses</div>
             
        <div id='guessContainer' style={{display: 'none', flexWrap: 'wrap' ,  maxHeight:'300px', overflowY: 'scroll', justifyContent: 'center'}}>{prevGuesses.length === 0 ?  <div style={{display: 'flex', width: '90%',color: 'white',  flexWrap: 'nowrap',  marginBottom: '10px', fontWeight: 'bold', fontSize: '30px'}}>{checkArray.map(element => <div style={{display: 'flex',marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element}</div>)}</div> : prevGuesses.map(element => <div style={{ display: 'flex', marginTop: '6px', width: '100%', fontWeight: 'bold', fontSize: '30px'}}>{element.map(element => element.correct === false ? <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'red', border: '2px solid white',width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div> : <div style={{display: 'flex', marginLeft: '3px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'green', color: 'white', border: '2px solid white', width: `${100/checkArray.length}%`, aspectRatio: '1 / 1'}}>{element.letter}</div>)}
             </div>)}</div>

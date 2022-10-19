@@ -18,7 +18,7 @@ export function EndGameboard( { number } ) {
     }
     return(
         <div onClick={handleToggle}>
-             <h2 style={{marginBottom: '3px',fontSize: 'min(5vw, 20px)', color: 'white'}}>Deblockle #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
+             <h2 style={{marginBottom: '3px',fontSize: 'min(5vw, 20px)', color: 'white'}}>popsquares #{Number(number) + 1} - {Moment().subtract(collection.length - Number(number) -1 , 'days').format('MMM Do YYYY')}</h2>
             <div id='toggleIcon' style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', height: '20px', width: '35px', border: '2px solid white', borderRadius: '20px', backgroundColor: 'rgba(0,0,0,.3)'}}><div style={{width: '19px', height: '19px', backgroundColor: 'white', border: '1px solid white', boxSizing: 'border-box', borderRadius: '50%'}}></div></div>
             {endImage === true ? <Squares /> : <Gameboard />}
               </div>
