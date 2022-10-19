@@ -16,11 +16,11 @@ export function Gameboard( {number} ) {
 
 
 function Squares(){
-    
+    let alive = useSelector(state => state.squares.alive)
     let squareArray = useSelector(state => state.squares.colorArray)
     function createTheSquares(element, index){
         
-            return <Square index={index} border={element.revealed ? 'none' : '.15px solid grey'} color={element.revealed ? element.color : 'white'} reveal={element.revealed} />
+            return <Square index={index} border={alive ? element.revealed ? 'none' : '.15px solid grey' : 'none'} color={element.revealed ? element.color : 'white'} reveal={element.revealed} />
         
         
     }

@@ -53,7 +53,7 @@ function App(  ) {
             
             <div>
               <div style={{display: 'flex', justifyContent: 'space-around', alignContent: 'center'}}>
-            <Link  to={`/${Number(number) - 1}`} onClick={handleRevive} > {Number(number) === 0 ? <button className='navButton' disabled>prev day</button> : <button className='navButton'>prev day (#{Number(number)})</button>}</Link>    
+            <Link  to={`/${Number(number) - 1}`} onClick={handleRevive} > {Number(number) === 0 ? <button className='navButton' style={{color: 'grey'}} disabled>prev day</button> : <button className='navButton'>prev day (#{Number(number)})</button>}</Link>    
             <Link  to={`/${Number(number) + 1}`} onClick={handleRevive} >{Number(number) === collection.length -1 ? <h2 style={{fontSize: '16px', color: 'white', marginTop: '15px'}}>#{Number(number) + 2} {Moment().endOf('day').add(9,'hours').fromNow()}</h2> : <button className='navButton'>next day (#{Number(number) + 2})</button>}</Link>     
           </div>
         </div>
