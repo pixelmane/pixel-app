@@ -186,13 +186,13 @@ form {
   
 }
 #toggleIcon {
-  position: fixed;
+  position: absolute;
   top: min(85vw, 340px);
   right: 10%;  
 }
 @media screen and (min-width: 401px) {
   #toggleIcon {
-    position: 'fixed';
+    position: absolute;
     right: calc(47% - 135px);
   }
 }
