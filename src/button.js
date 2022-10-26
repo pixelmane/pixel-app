@@ -27,7 +27,7 @@ export function Buttons( { number } ) {
     //rightAnswerArray.forEach((element, index) => checkArray.push({wrong: '?', right: rightAnswerArray[index],correct: false, }))
    
    function handleClick(element, index){
-        console.log(element.color)
+        
         dispatch(revealSquares({color: element.color,
                                 index: index}))
                                 
@@ -36,10 +36,9 @@ export function Buttons( { number } ) {
             document.getElementById('formBackground').style.display = 'block'
             document.getElementById('focus').focus()
         
-        console.log(element.color)
-        console.log(fakeColor)
+       
         if (element.color === fakeColor){
-            console.log('they match')
+            
             document.getElementById('decoy').style.display = 'flex'
 
         } 
@@ -58,8 +57,7 @@ export function Buttons( { number } ) {
         dispatch(buildColorArray())
        
         dispatch(buildCheckArray(checkArray))
-        console.log(colorOptions)
-        console.log(guess)
+        
         var root = document.querySelector(':root')
         root.style.setProperty('--columns', numberOfColumns)
         
@@ -67,7 +65,7 @@ export function Buttons( { number } ) {
     function handleChange(e){
         if(guess.length < rightAnswerArray.length && e.target.value !== 'DEL'){
         setGuess(guess => guess + e.target.value.toUpperCase())
-        console.log(guess)
+       
         }
         if(e.target.value === 'DEL'){
             let newGuess = Array.from(guess);
@@ -77,9 +75,9 @@ export function Buttons( { number } ) {
     
 }
     function handleSubmit(e) {
-        console.log(prevGuesses)
+        
         e.preventDefault()
-        console.log(guess)
+        
         dispatch(checkAnswer(guess))
         if(guess.toLowerCase() !== rightAnswer.toLowerCase()){
         handleCloseGuess()

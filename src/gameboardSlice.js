@@ -82,11 +82,10 @@ const gameboardSlice = createSlice({
             for (let n = 0; n < state.answerArray.length; n++){
                 state.checkArray.push('?')
             }
-            console.log(state.checkArray)
-            console.log(state.answerArray)
+            
         },
         createBoard: (state, action) => {
-            console.log('trying to create')
+            
         },
         buildColorArray: (state, action) => {
             
@@ -100,10 +99,10 @@ const gameboardSlice = createSlice({
             }
             }
             state.experiment.splice(1, 0, {color: state.fakeColor, clicked: false, tiles: 0})
-            console.log(proxyArray)
+        
         },
         revealColor: (state, action) => {
-            console.log(action.payload)
+            
             state.colorArray[action.payload].revealed = true;
         },
         checkAnswer: (state, action) => {
@@ -124,9 +123,9 @@ const gameboardSlice = createSlice({
                 }
             }
             state.previousGuesses.push(state.revealedCheckArray)
-            console.log(state.previousGuesses)
+            
           if(action.payload.toLowerCase() === state.answer.toLowerCase()){
-            console.log('youwin')
+           
             
             state.alive = false
           }  
